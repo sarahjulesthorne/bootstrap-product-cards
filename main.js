@@ -63,10 +63,23 @@ selectedDiv.innerHTML = textToPrint;
 
 const domStringBuilder = () => {
 let domString = '';
+let columnCounter = 0;
 products.forEach((product) => {
+if (columnCounter === 0) {
+domString += `<div class='row'>`;
+}
+    domString += `<div class='col-4'>`;
 domString += `<h2>${product.name}</h2>`;
+domString += `</div>`;
+columnCounter++;
+if (columnCounter === 3) {
+domString += `<div class='w-100'></div>`;
+}
+if (columnCounter === products.length) {
+domString += `</div>`;
+}
 })
-printToDom('cardContainer', domString);
+printToDom('productContainer', domString);
 };
 
 const init = () => {
