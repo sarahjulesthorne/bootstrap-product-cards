@@ -1,5 +1,4 @@
-const products = [
-    {
+const products = [{
         name: 'product 1',
         description: 'A very awesome product',
         imageURL: '',
@@ -57,32 +56,44 @@ const products = [
 ];
 
 const printToDom = (divId, textToPrint) => {
-const selectedDiv = document.getElementById(divId);
-selectedDiv.innerHTML = textToPrint;
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = textToPrint;
 };
 
 const domStringBuilder = () => {
-let domString = '';
-let columnCounter = 0;
-products.forEach((product) => {
-if (columnCounter === 0) {
-domString += `<div class='row'>`;
-}
-    domString += `<div class='col-4'>`;
-domString += `<h2>${product.name}</h2>`;
-domString += `</div>`;
-columnCounter++;
-if (columnCounter === 3) {
-domString += `<div class='w-100'></div>`;
-}
-if (columnCounter === products.length) {
-domString += `</div>`;
-}
-})
-printToDom('productContainer', domString);
+    let domString = '';
+    let columnCounter = 0;
+    products.forEach((product) => {
+        if (columnCounter === 0) {
+            domString += `<div class='row'>`;
+        }
+        domString += `<div class='col-4'>`;
+        domString += `<div class="card">`;
+        domString += `<div class="card-header">`;
+        domString += `<h2>${product.name}</h2>`;
+
+        domString += `</div>`;
+
+        domString += `<img src="..." class="card-img-top" alt="...">`;
+        domString += `<div class="card-body">`;
+        domString += `<p class="card-text">${product.description}</p>`;
+        domString += `<a href="#" class="btn btn-primary">Go somewhere</a>`;
+        domString += `</div>`;
+        domString += `</div>`;
+
+        domString += `</div>`;
+        columnCounter++;
+        if (columnCounter === 3) {
+            domString += `<div class='w-100'></div>`;
+        }
+        if (columnCounter === products.length) {
+            domString += `</div>`;
+        }
+    })
+    printToDom('productContainer', domString);
 };
 
 const init = () => {
-domStringBuilder();
+    domStringBuilder();
 };
 init();
