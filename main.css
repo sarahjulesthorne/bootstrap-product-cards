@@ -1,3 +1,10 @@
 body {
     background-color: lightblue;
 }
+
+/* product card image styling */
+.product-card-image {
+    height: 240px;
+    width: 200px;
+    margin: auto;
+}
